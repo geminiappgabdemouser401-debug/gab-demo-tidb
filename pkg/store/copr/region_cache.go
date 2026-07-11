@@ -552,6 +552,7 @@ func (l *LocationKeyRanges) splitKeyRangesByBuckets(ctx context.Context) ([]*Loc
 			r := ranges.At(0)
 			return []*LocationKeyRanges{l}, &bucketSplitFallbackInfo{
 				reason:              "range_start_outside_location",
+				bucketVersion:       l.getBucketVersion(),
 				startKey:            startKey,
 				endKey:              r.EndKey,
 				remainingRangeCount: ranges.Len(),
